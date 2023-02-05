@@ -57,7 +57,8 @@ class _SignInState extends State<SignIn> {
                     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                     sharedPreferences.setString('Email',EmailController.text);
                      sharedPreferences.setString('password',passwordController.text);
-                    sharedPreferences.setBool('checkvalue', true);
+                    sharedPreferences.setBool('CheckValue', true);
+
                    
                     Navigator.pop(context);
 

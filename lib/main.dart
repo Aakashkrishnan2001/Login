@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter1/home.dart';
+import 'package:flutter1/homefruitlist.dart';
 import 'package:flutter1/login.dart';
 import 'package:flutter1/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,27 +11,33 @@ void main()async {
   sp = await SharedPreferences.getInstance();
   runApp(Myapp());
 }
-class Myapp extends StatelessWidget {
+class Myapp extends StatefulWidget {
   static const String _title="App";
-  bool checkValue = sp?.getBool("checkvalue") ?? false;
+
+  @override
+  State<Myapp> createState() => _MyappState();
+}
+
+class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
+    bool checkValue = sp?.getBool("checkValue") ??false;
     if (kDebugMode) {
       print("++++++++++++++++++++");
-      print("${sp?.getBool("checkvalue") ?? false}");
+      print(checkValue);
     }
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      title:_title,
-      initialRoute: checkValue ? 'home':'login',
+      title:Myapp._title,
+      initialRoute: 'login',
       routes: {
         'login':(context) =>Login(
         ),
         'signin':(context) =>SignIn(),
-        'home':(context) =>HomePage()
+        'home':(context) =>Homefruitlist(),
       },
       home: Scaffold(
-        appBar: AppBar(title: Text(_title),),
+        appBar: AppBar(title: Text(Myapp._title),),
 
       ),
       );

@@ -1,32 +1,19 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter1/home.dart';
+import 'package:flutter1/homefruitlist.dart';
 import 'package:flutter1/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  Login({Key? key}) : super(key: key);
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
   String Email = '';
 
   String Password = '';
 
-bool passwordVisible = false;
-
   TextEditingController CheckEmailController = TextEditingController();
 
   TextEditingController CheckpasswordController = TextEditingController();
-
-  @override
-  @override
-  void initState() {
-    passwordVisible = false;
-  }
 
   Future getValidationData() async {
     final SharedPreferences sharedPreferences =
@@ -79,27 +66,30 @@ bool passwordVisible = false;
                   child: TextField(
                     controller: CheckpasswordController,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Password",
+                      border: OutlineInputBorder(),
+                      labelText: "Password",
+                    ),
+                  )),
+              Container(
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset('assets/images/Strawberry.jpeg')),
+                SizedBox(
+                  height: 100,
+                ),
 
-
-                      ),
-                  )
-              ),
               TextButton(onPressed: () {}, child: Text("Forget Password")),
               Container(
                   child: ElevatedButton(
                 child: Text("Login"),
                 onPressed: () async {
                   if (CheckEmailController.text == Email &&
-                      CheckpasswordController.text == Password)
-                  {
+                      CheckpasswordController.text == Password) {
                     final SharedPreferences sharedPreferences =
                         await SharedPreferences.getInstance();
-                    sharedPreferences.setBool('checkvalue', true);
-
-
-
+                    sharedPreferences.setBool('CheckValue', true);
+                    bool CheckValue =
+                        sharedPreferences.containsKey('CheckValue');
+                    print(CheckValue);
 
                     Navigator.pushReplacementNamed(context, 'home');
                   } else {
@@ -120,7 +110,7 @@ bool passwordVisible = false;
                       })
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,
-              )
+              ),
             ],
           )),
     );
