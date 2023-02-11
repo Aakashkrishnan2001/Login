@@ -4,9 +4,14 @@ import 'package:flutter1/homefruitlist.dart';
 import 'package:flutter1/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   String Email = '';
 
   String Password = '';
@@ -70,13 +75,6 @@ class Login extends StatelessWidget {
                       labelText: "Password",
                     ),
                   )),
-              Container(
-                  padding: EdgeInsets.all(10),
-                  child: Image.asset('assets/images/Strawberry.jpeg')),
-                SizedBox(
-                  height: 100,
-                ),
-
               TextButton(onPressed: () {}, child: Text("Forget Password")),
               Container(
                   child: ElevatedButton(
