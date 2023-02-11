@@ -17,7 +17,7 @@ class _HomeFruitlistState extends State<Homefruitlist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('FRUITS LIST'),
+        appBar: AppBar(title: Text('FRUITS LIST Changes'),
         ),bottomNavigationBar: ElevatedButton(
     child: const Text("Logut"),
     onPressed: () async {
